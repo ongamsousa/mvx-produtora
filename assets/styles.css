@@ -341,7 +341,7 @@ section.light .service-card p{color:rgba(27,27,27,.62)}
 .clients-strip .client{opacity:.85;white-space:nowrap;display:flex;align-items:center;gap:18px;transition:opacity .3s}
 .clients-strip .client:hover{opacity:1}
 .clients-strip .client::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.3}
-.clients-strip .client img{height:46px;width:auto;max-width:150px;object-fit:contain;display:block}
+.clients-strip .client img{height:68px;width:auto;max-width:220px;object-fit:contain;display:block}
 
 /* ---------- Manifesto (new component) ---------- */
 .manifesto{text-align:center}
