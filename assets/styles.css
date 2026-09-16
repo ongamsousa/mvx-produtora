@@ -72,11 +72,10 @@ nav.top .cta .live{width:6px;height:6px;border-radius:50%;background:var(--wa);b
   margin-bottom:36px;
 }
 .hero h1.hero-line{
-  font-size:clamp(26px, 4.2vw, 62px);
-  line-height:1.15;
-  letter-spacing:-0.02em;
+  font-size:clamp(22px, 6.4vw, 100px);
+  line-height:1.02;
+  letter-spacing:-0.03em;
 }
-.hero h1.hero-line .lead{color:var(--paper)}
 .hero h1 .light{font-weight:300;color:var(--muted)}
 .hero h1 .reveal{display:inline-block;clip-path:inset(-15% -25% -15% -2%);vertical-align:bottom}
 .hero h1 .reveal > span{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;padding-right:.05em}
@@ -90,10 +89,24 @@ nav.top .cta .live{width:6px;height:6px;border-radius:50%;background:var(--wa);b
 .mark-wrap .cursor{display:inline-block;width:.08em;height:.78em;background:var(--paper);vertical-align:baseline;margin-left:.04em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 
-/* hero headline word rotation: typewriter reveal, 3 words, 7s each, looping.
+/* hero headline word rotation: typewriter reveal, 3 words, 7s each, looping,
+   sitting inline on the 2nd reveal line ("que gera <word>.") so the headline
+   stays at 2 lines max, matching tono's line-rise entrance for that span.
    Monospace (var(--mono), already used for the REC timecode + ticker) makes
-   the ch-unit width steps land exactly on character boundaries. */
-.hero h1 .word-rotate{display:inline-grid;vertical-align:bottom;font-family:var(--mono);font-weight:500;color:var(--accent)}
+   the ch-unit width steps land exactly on character boundaries. Color is
+   var(--muted) — tono's own headline "destaque" is bright/paper vs. muted
+   contrast (see "tom<span style=color:var(--muted)>.</span>"), not a
+   saturated accent; --accent stays reserved for the REC dot only.
+   Word animation delays are shifted by 1.2s (line 2's .30s rise delay + .9s
+   rise duration) so the first typewriter cycle starts once the line is
+   visible, not while still hidden mid-entrance. */
+.hero h1 .word-rotate{
+  display:inline-grid;
+  vertical-align:bottom;
+  font-family:var(--mono);
+  font-weight:500;
+  color:var(--muted);
+}
 .word-rotate .word{
   grid-area:1/1;
   display:inline-block;
@@ -106,9 +119,9 @@ nav.top .cta .live{width:6px;height:6px;border-radius:50%;background:var(--wa);b
   animation-iteration-count:infinite;
 }
 .word-rotate .word .cursor{display:inline-block;width:.09em;height:.72em;background:currentColor;vertical-align:-0.05em;margin-left:.06em;animation:blink 1s steps(1) infinite}
-.word-rotate .word:nth-child(1){animation-name:typeWord1;animation-delay:0s}
-.word-rotate .word:nth-child(2){animation-name:typeWord2;animation-delay:-14s}
-.word-rotate .word:nth-child(3){animation-name:typeWord3;animation-delay:-7s}
+.word-rotate .word:nth-child(1){animation-name:typeWord1;animation-delay:1.2s}
+.word-rotate .word:nth-child(2){animation-name:typeWord2;animation-delay:-12.8s}
+.word-rotate .word:nth-child(3){animation-name:typeWord3;animation-delay:-5.8s}
 /* "Impacto." — 8 chars */
 @keyframes typeWord1{
   0%{width:0;animation-timing-function:steps(8)}
