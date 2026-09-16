@@ -83,6 +83,30 @@ nav.top .cta .live{width:6px;height:6px;border-radius:50%;background:var(--wa);b
 .mark-wrap .cursor{display:inline-block;width:.08em;height:.78em;background:var(--paper);vertical-align:baseline;margin-left:.04em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 
+/* hero headline word rotation: 3 words, 7s each, crossfading in a loop */
+.hero h1.word-rotate{display:grid}
+.word-rotate .word{
+  grid-area:1/1;
+  opacity:0;
+  transform:translateY(16px);
+  animation:wordCycle 21s var(--ease-in-out, cubic-bezier(.77,0,.175,1)) infinite;
+}
+.word-rotate .word:nth-child(1){animation-delay:0s}
+.word-rotate .word:nth-child(2){animation-delay:-14s}
+.word-rotate .word:nth-child(3){animation-delay:-7s}
+.word-rotate .word .cursor{display:inline-block;width:.08em;height:.78em;background:var(--paper);vertical-align:baseline;margin-left:.04em;animation:blink 1s steps(1) infinite}
+@keyframes wordCycle{
+  0%{opacity:0;transform:translateY(16px)}
+  4%{opacity:1;transform:translateY(0)}
+  29%{opacity:1;transform:translateY(0)}
+  33%{opacity:0;transform:translateY(-16px)}
+  100%{opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .word-rotate .word{animation:wordCycleFade 21s ease infinite}
+  @keyframes wordCycleFade{0%{opacity:0}4%{opacity:1}29%{opacity:1}33%{opacity:0}100%{opacity:0}}
+}
+
 .hero .sub-row{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end;padding-top:14px;border-top:1px solid var(--line-2)}
 .hero .sub-row p{max-width:520px;font-size:17px;line-height:1.55;color:rgba(248,248,248,.78);padding-top:18px}
 .hero .sub-row .actions{display:flex;gap:14px;justify-self:end;padding-top:18px}
